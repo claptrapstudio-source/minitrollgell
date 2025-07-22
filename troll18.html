@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>⚠️ Battery Overheating Warning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background-color: #300;
+      color: #ff4444;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    h1 {
+      font-size: 24px;
+      animation: blink 1s infinite;
+    }
+    p {
+      font-size: 18px;
+    }
+    @keyframes blink {
+      0% { color: #ff4444; }
+      50% { color: #fff; }
+      100% { color: #ff4444; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>⚠️ BATTERY OVERHEATING</h1>
+  <p>Device temperature: 132°C</p>
+  <p>Auto-shutdown in progress...</p>
+  <p>Warning: Meltdown risk detected</p>
+
+  <audio id="beep" src="https://www.soundjay.com/button/beep-07.mp3" preload="auto"></audio>
+
+  <script>
+    const beep = document.getElementById("beep");
+
+    function vibratePhone(pattern) {
+      if (navigator.vibrate) {
+        navigator.vibrate(pattern);
+      }
+    }
+
+    let countdown = 5;
+    const interval = setInterval(() => {
+      beep.play();
+      vibratePhone([300, 100, 300]);
+      alert(`🔥 CRITICAL: Phone will explode in ${countdown}...`);
+      countdown--;
+      if (countdown < 0) {
+        clearInterval(interval);
+        document.body.style.backgroundColor = "#000";
+        document.body.innerHTML = `
+          <h1 style="color:lime;">😂 YOU SURVIVED!</h1>
+          <p style="color:white;">…but your reputation didn’t.</p>
+          <p style="color:yellow;">You’ve been roasted by a fake explosion 😈</p>
+        `;
+        alert("💣 BOOM! Your battery didn’t explode, but your pride did.");
+      }
+    }, 1500);
+  </script>
+
+</body>
+</html>

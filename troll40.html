@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🎯 Challenge: Find the Dot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: monospace;
+      text-align: center;
+      padding: 30px;
+    }
+
+    #game {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(10, 30px);
+      grid-gap: 8px;
+      justify-content: center;
+    }
+
+    .cell {
+      width: 30px;
+      height: 30px;
+      background-color: #333;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .cell:hover {
+      background-color: #555;
+    }
+
+    #message {
+      margin-top: 30px;
+      font-size: 18px;
+      color: yellow;
+    }
+
+    #share {
+      margin-top: 20px;
+      color: #ccc;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎯 VISUAL TASK</h1>
+  <p>One of these 100 dots is the real one. Find and click it.</p>
+  
+  <div id="game"></div>
+
+  <div id="message"></div>
+  <div id="share"></div>
+
+  <script>
+    const game = document.getElementById("game");
+    const message = document.getElementById("message");
+    const share = document.getElementById("share");
+
+    let clicked = false;
+    const correctIndex = Math.floor(Math.random() * 100);
+
+    for (let i = 0; i < 100; i++) {
+      const dot = document.createElement("div");
+      dot.classList.add("cell");
+
+      dot.onclick = () => {
+        if (clicked) return;
+
+        clicked = true;
+
+        if (i === correctIndex) {
+          message.innerHTML = "✅ You found it... But it doesn’t change the fact that you’re still useless.";
+        } else {
+          message.innerHTML = "❌ Wrong dot. Disappointment is disappointed in you.";
+        }
+
+        share.innerHTML = `
+          <br><hr><br>
+          Share with your friends to test how dumb they are too. <br>
+          Try the other troll games now. <br><br>
+          😂 Thank me later.
+        `;
+      };
+
+      game.appendChild(dot);
+    }
+  </script>
+
+</body>
+</html>

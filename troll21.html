@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🎮 Loading Game...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding-top: 120px;
+    }
+
+    .loader {
+      border: 12px solid #444;
+      border-top: 12px solid #03fc7b;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      animation: spin 1.5s linear infinite;
+      margin: 30px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #loadingText {
+      font-size: 22px;
+      margin-top: 20px;
+    }
+
+    #finalMsg {
+      display: none;
+      margin-top: 40px;
+      color: yellow;
+      font-size: 20px;
+    }
+
+    .troll-btn {
+      margin-top: 25px;
+      padding: 10px 25px;
+      background-color: crimson;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎮 Loading: Super Ultra HD Realistic Game v6.9</h1>
+  <div class="loader"></div>
+  <div id="loadingText">Please wait... Optimizing polygons (0%)</div>
+  <div id="finalMsg"></div>
+
+  <script>
+    const loading = document.getElementById("loadingText");
+    const finalMsg = document.getElementById("finalMsg");
+
+    let percent = 0;
+    let fakeLoad = setInterval(() => {
+      percent += Math.floor(Math.random() * 4) + 1;
+      if (percent > 99) percent = 99;
+      loading.innerText = `Please wait... Optimizing polygons (${percent}%)`;
+    }, 500);
+
+    setTimeout(() => {
+      clearInterval(fakeLoad);
+      loading.innerText = "Finalizing ultra-realistic textures (99.9%)";
+    }, 10000);
+
+    setTimeout(() => {
+      loading.style.display = "none";
+      finalMsg.style.display = "block";
+      finalMsg.innerHTML = `
+        <p>Thanks for waiting.</p>
+        <p>Now uninstall yourself. 🫡</p>
+        <button class="troll-btn" onclick="alert('💣 Game uninstalled. You too. 😂')">
+          Uninstall Game
+        </button>
+        <p style="color:lime; margin-top: 20px;">😂 You’ve been loading-trolled.</p>
+      `;
+      alert("🎮 Game failed to load because you're not gamer enough.");
+      alert("TROLL LEVEL 21 COMPLETED.");
+    }, 14000);
+  </script>
+
+</body>
+</html>

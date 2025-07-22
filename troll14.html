@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🧠 IQ Test Portal</title>
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    .question {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      background: crimson;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 Online IQ Assessment</h1>
+  <p>Question 1 of 1: What is 2 + 2?</p>
+
+  <div class="question">
+    <button onclick="fail()">4</button>
+    <button onclick="fail()">22</button>
+    <button onclick="fail()">5</button>
+    <button onclick="fail()">Fish</button>
+  </div>
+
+  <script>
+    function fail() {
+      alert("Evaluating answer...");
+      setTimeout(() => {
+        alert("Wrong. All of them. How??");
+        alert("You failed at being human 😭");
+        alert("Your IQ score: 🍞 Bread.");
+        alert("Result: TROLLED SUCCESSFULLY 😈");
+        document.body.innerHTML = `
+          <h1 style="color:gold;">😂 YOU FAILED THE TEST 😂</h1>
+          <p>Your IQ has been donated to a rock.</p>
+          <p>Now forward this to your smartest friend.</p>
+        `;
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>

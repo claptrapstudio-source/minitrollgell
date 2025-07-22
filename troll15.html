@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🔄 System Update</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: #ffffff;
+      font-family: "Roboto", sans-serif;
+      text-align: center;
+      height: 100%;
+      overflow: hidden;
+      user-select: none;
+    }
+    .container {
+      padding-top: 100px;
+    }
+    .loader {
+      border: 12px solid #333;
+      border-top: 12px solid #03dac6;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      animation: spin 1.5s linear infinite;
+      margin: 30px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    h1 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+      color: #aaaaaa;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🔄 Installing system update...</h1>
+    <div class="loader"></div>
+    <p>Optimizing app 23 of 23</p>
+    <p>Do not turn off your phone</p>
+  </div>
+
+  <audio id="scream" src="https://www.soundjay.com/human/screaming-man-01.mp3"></audio>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("scream").play();
+      alert("🚨 Critical Failure: Your brain just updated to version 0.0.1 (BETA)");
+      alert("This unstable version may crash under basic logic.");
+      alert("You’ve been trolled. Forward this or suffer eternal lag. 😈");
+      document.body.innerHTML = `
+        <div class="container">
+          <h1 style="color:#ff5252;">💀 SYSTEM TROLL COMPLETE 💀</h1>
+          <p style="font-size: 18px;">You just became the update no one asked for.</p>
+          <p>Share this with your techy friend. They'll scream too.</p>
+        </div>
+      `;
+    }, 8500);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>📡 National Emergency Alert</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 60px;
+      animation: flash 1s infinite;
+    }
+
+    @keyframes flash {
+      0% { background-color: black; }
+      50% { background-color: red; }
+      100% { background-color: black; }
+    }
+
+    h1 {
+      font-size: 26px;
+      color: yellow;
+    }
+
+    #alertBox {
+      margin-top: 50px;
+      font-size: 22px;
+      color: white;
+    }
+
+    #finalMsg {
+      display: none;
+      margin-top: 40px;
+      font-size: 20px;
+      color: lime;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚨 EMERGENCY BROADCAST SYSTEM 🚨</h1>
+  <div id="alertBox">
+    <p>This is a national emergency.</p>
+    <p>All citizens must remain calm.</p>
+    <p>Await further instructions…</p>
+  </div>
+
+  <div id="finalMsg"></div>
+  <audio id="siren" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
+
+  <script>
+    const alertBox = document.getElementById("alertBox");
+    const finalMsg = document.getElementById("finalMsg");
+    const siren = document.getElementById("siren");
+
+    // Play warning beep
+    setTimeout(() => {
+      siren.play();
+    }, 500);
+
+    setTimeout(() => {
+      alertBox.innerHTML = "<p><strong>⚠️ THIS IS NOT A DRILL ⚠️</strong></p><p>System meltdown detected.</p>";
+    }, 4000);
+
+    setTimeout(() => {
+      alertBox.style.display = "none";
+      finalMsg.style.display = "block";
+      finalMsg.innerHTML = `
+        <p>☠️ You’ve been trolled to extinction.</p>
+        <p>Mission: Humiliation Complete.</p>
+        <p style="color:yellow;">😂 TROLL LEVEL 29 COMPLETED</p>
+      `;
+      alert("💣 National IQ has dropped to critical levels.");
+      alert("🧠 Braincore meltdown confirmed.");
+    }, 9000);
+  </script>
+
+</body>
+</html>

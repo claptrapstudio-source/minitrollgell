@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🧠 AI Face Match</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background: #000;
+      color: #0ff;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 60px;
+    }
+
+    .facebox {
+      width: 150px;
+      height: 150px;
+      margin: 20px auto;
+      background-color: #222;
+      border-radius: 50%;
+      border: 5px solid #0ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 40px;
+    }
+
+    #status {
+      font-size: 18px;
+      margin-top: 30px;
+    }
+
+    #finalResult {
+      display: none;
+      margin-top: 40px;
+      color: yellow;
+      font-size: 20px;
+    }
+
+    img {
+      border-radius: 50%;
+      width: 100px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 Facial Recognition Scan</h1>
+  <div class="facebox">📷</div>
+  <p id="status">Analyzing facial geometry...</p>
+  <div id="finalResult"></div>
+
+  <script>
+    const statusText = document.getElementById("status");
+    const finalResult = document.getElementById("finalResult");
+
+    const roastMatches = [
+      {
+        name: "Boiled Egg",
+        img: "https://upload.wikimedia.org/wikipedia/commons/f/f0/Hard-Boiled_egg_with_shell.jpg",
+        percent: 91,
+        line: "You cracked the system. Literally."
+      },
+      {
+        name: "Dustbin Lid",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Garbage_can_lid.jpg/800px-Garbage_can_lid.jpg",
+        percent: 87,
+        line: "Trash detected. 🗑️"
+      },
+      {
+        name: "Broken Toaster",
+        img: "https://upload.wikimedia.org/wikipedia/commons/3/33/Old_toaster.jpg",
+        percent: 89,
+        line: "Hot mess level: 9000."
+      },
+      {
+        name: "Expired Potato",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Moldy_potato.JPG/800px-Moldy_potato.JPG",
+        percent: 93,
+        line: "You’ve aged… poorly."
+      },
+      {
+        name: "Uncooked Roti",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Roti_with_ghee.jpg/640px-Roti_with_ghee.jpg",
+        percent: 88,
+        line: "Still undercooked like your plans."
+      },
+      {
+        name: "Wall Gecko",
+        img: "https://upload.wikimedia.org/wikipedia/commons/6/6e/Common_house_gecko.jpg",
+        percent: 85,
+        line: "Climbing your way into failure."
+      },
+      {
+        name: "USB Cable End",
+        img: "https://upload.wikimedia.org/wikipedia/commons/e/ea/USB_Type_A_Plug_Connector.jpg",
+        percent: 92,
+        line: "Connected to nothing. Just like your dreams."
+      }
+    ];
+
+    const match = roastMatches[Math.floor(Math.random() * roastMatches.length)];
+
+    setTimeout(() => {
+      statusText.innerText = "Scanning facial symmetry...";
+    }, 2000);
+
+    setTimeout(() => {
+      statusText.innerText = "Comparing with global celebrity database...";
+    }, 4000);
+
+    setTimeout(() => {
+      statusText.innerText = "Finding your perfect match...";
+    }, 6000);
+
+    setTimeout(() => {
+      statusText.style.display = "none";
+      finalResult.style.display = "block";
+      finalResult.innerHTML = `
+        <h2>🎉 Match Found!</h2>
+        <img src="${match.img}" alt="${match.name}" />
+        <p>${match.percent}% Match with: <strong>${match.name}</strong></p>
+        <p style="color:lime;">😂 ${match.line}</p>
+      `;
+      alert(`Perfect match found: ${match.name} 🥴`);
+      alert("TROLL LEVEL 24 COMPLETED.");
+    }, 9000);
+  </script>
+
+</body>
+</html>

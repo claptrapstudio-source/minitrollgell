@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🛡️ AI Antivirus Scanner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background-color: #111;
+      color: #0f0;
+      font-family: "Courier New", monospace;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .terminal {
+      background-color: #000;
+      border: 2px solid #0f0;
+      padding: 15px;
+      margin-top: 30px;
+      text-align: left;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      height: 300px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      font-size: 14px;
+    }
+
+    #alertBox {
+      display: none;
+      background-color: #ff0033;
+      color: white;
+      font-size: 22px;
+      padding: 20px;
+      margin-top: 30px;
+      border: 2px solid yellow;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🛡️ SmartDefender Pro - Threat Scanner</h1>
+  <p>Scanning system for unusual files and folders...</p>
+
+  <div class="terminal" id="terminal">
+    Initializing scan engine...
+  </div>
+
+  <div id="alertBox">⚠️ CRITICAL SYSTEM FAILURE DETECTED<br>Shutting down in 10... 9... 8...</div>
+
+  <script>
+    const terminal = document.getElementById("terminal");
+    const alertBox = document.getElementById("alertBox");
+    const fakeThreats = [
+      "🔍 Found: Cringe_TikToks_2017.zip",
+      "🔍 Found: Folder - MEMES_YOU_SHOULDN'T_HAVE_SAVED",
+      "⚠️ Suspicious File: Love_Letters_to_AI_Girlfriend.txt",
+      "⚠️ Found: App - 'ClickToGetRichQuick.apk'",
+      "🔍 Found: Unused_Emojis_Database.emoj",
+      "⚠️ Found: Folder - 'ScreenshotsOfFailedRizz/'",
+      "💣 Detected: Folder - 'Homework_Final_REAL_FINAL_4_REDO_(1).zip'",
+      "🧠 Alert: Excessive cringe levels detected",
+      "🚨 Virus Signature: BRO_MOMENTS_4LIFE.dll",
+      "🦠 Malware Path: /storage/self/EMBARRASSING_PAST/"
+    ];
+
+    let index = 0;
+
+    function printNext() {
+      if (index < fakeThreats.length) {
+        terminal.innerText += "\n" + fakeThreats[index];
+        terminal.scrollTop = terminal.scrollHeight;
+        index++;
+        setTimeout(printNext, 1000);
+      } else {
+        setTimeout(() => {
+          alertBox.style.display = "block";
+          let count = 10;
+          const countdown = setInterval(() => {
+            alertBox.innerHTML = `⚠️ CRITICAL SYSTEM FAILURE DETECTED<br>Shutting down in ${count}...`;
+            count--;
+            if (count < 0) {
+              clearInterval(countdown);
+              alertBox.innerHTML = "😂 TROLLED SUCCESSFULLY! Your files are safe (but your pride isn’t)";
+              alert("Troll complete. Share this terror with someone else 😈");
+            }
+          }, 800);
+        }, 1500);
+      }
+    }
+
+    setTimeout(printNext, 2000);
+  </script>
+
+</body>
+</html>
+

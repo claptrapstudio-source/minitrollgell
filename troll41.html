@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🌶️ TROLL LEVEL 41 — Complete Your Fate</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: monospace;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      color: orange;
+      font-size: 28px;
+    }
+
+    #task {
+      font-size: 18px;
+      margin: 20px 0;
+      color: cyan;
+    }
+
+    .emoji-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 50px);
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .emoji {
+      font-size: 32px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .emoji:hover {
+      transform: scale(1.2);
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 18px;
+      color: yellow;
+    }
+
+    #footer {
+      margin-top: 30px;
+      color: #aaa;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌶️ SPICY VISUAL TROLL</h1>
+  <div id="task">Loading challenge...</div>
+  <div id="game" class="emoji-grid"></div>
+  <div id="result"></div>
+  <div id="footer"></div>
+
+  <script>
+    const tasks = [
+      {
+        prompt: "Tap the ONE 🌮 hiding among the 🌶️",
+        correct: "🌮",
+        wrong: "🌶️"
+      },
+      {
+        prompt: "Find the 💩 among the 🔥",
+        correct: "💩",
+        wrong: "🔥"
+      },
+      {
+        prompt: "Tap the 🧻 hidden in the 🍕 pile",
+        correct: "🧻",
+        wrong: "🍕"
+      },
+      {
+        prompt: "Find the single 🐔 in this farm of 🐄",
+        correct: "🐔",
+        wrong: "🐄"
+      },
+      {
+        prompt: "One 😵 face among these 😎. Find it.",
+        correct: "😵",
+        wrong: "😎"
+      }
+    ];
+
+    const roasts = {
+      win: [
+        "🎉 You did it! But calm down... you're still built like a soggy samosa.",
+        "✔️ Challenge complete. Unfortunately, personality not found.",
+        "Yes, you clicked it... but intelligence still pending delivery.",
+        "You're right. That was lucky. Don’t get confident.",
+        "Congrats! But still... your presence lowers Wi-Fi speed."
+      ],
+      fail: [
+        "❌ You failed. Disappointment is now disappointed in you.",
+        "Wrong choice. Your ancestors want to unsubscribe from your bloodline.",
+        "That wasn’t even close. Try using your eyes next time.",
+        "Wrong. Even a broken fan makes more useful decisions.",
+        "Nope. Brain not found. Please reconnect the cable."
+      ]
+    };
+
+    const task = tasks[Math.floor(Math.random() * tasks.length)];
+    const roastWin = roasts.win[Math.floor(Math.random() * roasts.win.length)];
+    const roastFail = roasts.fail[Math.floor(Math.random() * roasts.fail.length)];
+    const grid = document.getElementById("game");
+    const result = document.getElementById("result");
+    const footer = document.getElementById("footer");
+    const taskText = document.getElementById("task");
+
+    taskText.innerText = task.prompt;
+
+    const emojis = Array(35).fill(task.wrong);
+    const correctIndex = Math.floor(Math.random() * 35);
+    emojis[correctIndex] = task.correct;
+
+    let clicked = false;
+
+    emojis.forEach((em, i) => {
+      const span = document.createElement("span");
+      span.classList.add("emoji");
+      span.innerText = em;
+
+      span.onclick = () => {
+        if (clicked) return;
+        clicked = true;
+
+        if (i === correctIndex) {
+          result.innerHTML = `✅ ${roastWin}`;
+        } else {
+          result.innerHTML = `💀 ${roastFail}`;
+        }
+
+        footer.innerHTML = `
+          <br><hr><br>
+          🔁 Share this spicy disaster with your friends.<br>
+          Try the next humiliating challenge.<br><br>
+          😂 Thank me later.
+        `;
+      };
+
+      grid.appendChild(span);
+    });
+  </script>
+
+</body>
+</html>

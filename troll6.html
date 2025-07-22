@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🎤 Voice Analyzer - Speak Now</title>
+</head>
+<body style="background-color: #000; color: lime; font-family: monospace; text-align: center; padding-top: 100px;">
+
+  <h1>🎤 Voice Analysis In Progress...</h1>
+  <p>Please speak loudly into your microphone.</p>
+
+  <audio id="babySound" src="https://www.soundjay.com/human/baby-crying-01.mp3"></audio>
+
+  <script>
+    alert("Initializing microphone access...");
+    setTimeout(() => {
+      alert("Voice captured! Analyzing waveform data...");
+    }, 2000);
+
+    setTimeout(() => {
+      document.getElementById("babySound").play();
+      alert("YOU FAILED THE TEST MISERABLY! 😂");
+      alert("You’ve been trolled with a crying baby. Share the pain 😈");
+    }, 5000);
+  </script>
+
+</body>
+</html>

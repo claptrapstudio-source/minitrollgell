@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>💰 UPI Transfer in Progress</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #0f0;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 60px;
+    }
+
+    .box {
+      border: 2px solid #0f0;
+      padding: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 10px;
+    }
+
+    #progressBar {
+      width: 100%;
+      height: 20px;
+      background-color: #222;
+      border: 1px solid #0f0;
+      margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    #bar {
+      height: 100%;
+      width: 0%;
+      background-color: #00ff99;
+      transition: width 0.5s;
+    }
+
+    #finalMessage {
+      display: none;
+      margin-top: 30px;
+      color: red;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>💸 Sending ₹10,000 to Bank Account</h2>
+    <p>Bank: SBI • IFSC: SBIN0001234</p>
+    <p>Verifying OTP...</p>
+    <div id="progressBar"><div id="bar"></div></div>
+    <p id="loadingText">Processing Transaction...</p>
+  </div>
+
+  <div id="finalMessage"></div>
+
+  <script>
+    const bar = document.getElementById("bar");
+    const final = document.getElementById("finalMessage");
+    const loadText = document.getElementById("loadingText");
+
+    let percent = 0;
+    let loading = setInterval(() => {
+      percent += Math.floor(Math.random() * 6) + 2;
+      if (percent >= 100) percent = 100;
+      bar.style.width = percent + "%";
+      if (percent === 100) {
+        clearInterval(loading);
+        loadText.innerText = "Finalizing payment...";
+        setTimeout(() => {
+          document.querySelector('.box').style.display = 'none';
+          final.style.display = 'block';
+          final.innerHTML = `
+            <h2>❌ Transfer Failed</h2>
+            <p>You’re too broke for this transaction.</p>
+            <p style="color:lime;">😂 Sit down, dreamer.</p>
+          `;
+          alert("Insufficient vibe balance detected.");
+          alert("TROLL LEVEL 23 COMPLETE 💸");
+        }, 2000);
+      }
+    }, 500);
+  </script>
+
+</body>
+</html>

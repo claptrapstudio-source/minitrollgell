@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🧠 Hacker Console</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      padding: 20px;
+      font-size: 14px;
+      overflow: hidden;
+    }
+
+    #console {
+      white-space: pre-wrap;
+      height: 90vh;
+      overflow-y: auto;
+      border: 2px solid #0f0;
+      padding: 10px;
+      background-color: #000;
+    }
+
+    #boom {
+      display: none;
+      text-align: center;
+      margin-top: 30px;
+      color: red;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>💻 TROLL OS v2.6 - Hacker Terminal Access</h2>
+  <div id="console"></div>
+  <div id="boom"></div>
+
+  <script>
+    const lines = [
+      "Initializing root access...",
+      "Connecting to secure satellite...",
+      "Bypassing firewall... ✅",
+      "Accessing confidential government database...",
+      "Injecting payload...",
+      "Decrypting top secret data...",
+      ">>> ACCESS GRANTED <<<",
+      "Downloading classified files...",
+      "Exporting credentials: admin@india.gov.in",
+      "IP Trace active... bouncing signal via 7 proxies...",
+      "Installing tracking backdoor...",
+      "WARNING: Trace detected!",
+      "Encrypting trail... cloaking identity...",
+      "Self-destruct protocol initiated...",
+      "System override confirmed.",
+      "✳️ Complete control achieved.",
+      "Waiting for final confirmation...",
+      "RUNNING FINAL COMMAND..."
+    ];
+
+    const consoleBox = document.getElementById("console");
+    const boomBox = document.getElementById("boom");
+    let index = 0;
+
+    const printNext = () => {
+      if (index < lines.length) {
+        consoleBox.innerText += lines[index] + "\n";
+        consoleBox.scrollTop = consoleBox.scrollHeight;
+        index++;
+        setTimeout(printNext, 500);
+      } else {
+        setTimeout(() => {
+          document.body.style.background = "#a00";
+          consoleBox.style.display = "none";
+          boomBox.style.display = "block";
+          boomBox.innerHTML = `
+            <h2>💀 SYSTEM BREACH DETECTED</h2>
+            <p>Congratulations.</p>
+            <p>You’ve hacked your own stupidity.</p>
+            <p style="color:lime;">😂 TROLL LEVEL 26 COMPLETE</p>
+          `;
+          alert("HACK SUCCESSFUL: Intelligence level = 0");
+        }, 1000);
+      }
+    };
+
+    printNext();
+  </script>
+
+</body>
+</html>

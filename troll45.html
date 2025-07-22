@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🧠 TROLL LEVEL 45 — Face Recognition AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #0f0;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      color: cyan;
+      margin-bottom: 10px;
+    }
+
+    #scanner {
+      border: 3px solid #0f0;
+      width: 240px;
+      height: 180px;
+      background: #111;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #status {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    #result {
+      margin-top: 30px;
+      color: red;
+      font-size: 20px;
+      display: none;
+    }
+
+    #footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #888;
+    }
+
+    .dot {
+      font-size: 24px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔍 FACE RECOGNITION SCAN</h1>
+  <p>Position your face in front of the camera...</p>
+
+  <div id="scanner">🟢 SCANNING...</div>
+  <div id="status">Analyzing facial structure<span class="dot">.</span></div>
+  <div id="result"></div>
+  <div id="footer"></div>
+
+  <script>
+    const result = document.getElementById("result");
+    const footer = document.getElementById("footer");
+    const status = document.getElementById("status");
+    const scanner = document.getElementById("scanner");
+
+    const roastMessages = [
+      "Face matched: 99% Potato, 1% Confusion.",
+      "Camera Error: Reflection refused to appear.",
+      "Match found: Your face is banned in 7 dimensions.",
+      "Analysis complete: Still loading brain module...",
+      "Identified as: Future meme material 💀.",
+      "Scan result: You’re what CAPTCHA tries to block.",
+      "Match: Emotionally unstable houseplant.",
+      "Result: Looks like your thoughts lagged too.",
+      "Face Status: Looks like a failed AI experiment.",
+      "Recognition failed: Mirror cracked itself.",
+      "FaceType: Discount version of disappointment.",
+      "Scan Complete: Brain not found.",
+      "Processing error: Your face caused the AI to resign.",
+      "ID Verified: Belongs to the Ministry of Dumb Decisions.",
+      "Alert: Face too rare. Possibly illegal in 9 countries."
+    ];
+
+    // Pick a random roast
+    const randomRoast = roastMessages[Math.floor(Math.random() * roastMessages.length)];
+
+    setTimeout(() => {
+      status.innerText = "Matching against AI database...";
+    }, 3000);
+
+    setTimeout(() => {
+      scanner.innerText = "📸";
+      result.innerHTML = `💀 ${randomRoast}`;
+      result.style.display = "block";
+
+      footer.innerHTML = `
+        👁️ Share with your brave friends.<br>
+        🎮 Try the next troll. You need help.<br><br>
+        😂 Thank me later.
+      `;
+    }, 7000);
+  </script>
+
+</body>
+</html>

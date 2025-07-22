@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🤖 AI Identity Scanner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: black;
+      color: lime;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 60px;
+    }
+
+    #status {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    #result {
+      display: none;
+      font-size: 22px;
+      color: red;
+      margin-top: 40px;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
+    .flicker {
+      animation: flicker 1s infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔍 AI Identity Verification In Progress...</h1>
+  <p id="status">Scanning facial structure...</p>
+  <div id="result" class="flicker"></div>
+
+  <script>
+    const status = document.getElementById("status");
+    const result = document.getElementById("result");
+
+    const phases = [
+      "Scanning facial structure...",
+      "Analyzing voice tone...",
+      "Measuring brainwave consistency...",
+      "Evaluating emotional stability...",
+      "Reading aura colors...",
+      "Cross-checking with global clown database...",
+      "Finalizing identity profile..."
+    ];
+
+    let i = 0;
+
+    const phaseLoop = () => {
+      if (i < phases.length) {
+        status.innerText = phases[i];
+        i++;
+        setTimeout(phaseLoop, 1500);
+      } else {
+        status.style.display = "none";
+        result.style.display = "block";
+        result.innerHTML = `
+          <p>✅ Identity Confirmed.</p>
+          <p>Designation: <strong>Certified Clown 🤡</strong></p>
+          <p>Clown Level: <strong>9000+</strong></p>
+          <p>Dignity: <em>Unavailable</em></p>
+          <p style="color:lime;">😂 TROLL LEVEL 32 COMPLETE</p>
+        `;
+        alert("🧠 AI Scan Complete: You're officially ridiculous.");
+      }
+    };
+
+    phaseLoop();
+  </script>
+
+</body>
+</html>

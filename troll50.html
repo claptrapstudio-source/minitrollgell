@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>😂 Final Task — Troll Level 50</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #fffc00;
+    }
+
+    #task {
+      margin-top: 30px;
+      font-size: 20px;
+    }
+
+    button {
+      margin-top: 40px;
+      padding: 12px 30px;
+      font-size: 16px;
+      background-color: #00ff88;
+      color: black;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #roast {
+      margin-top: 30px;
+      color: red;
+      font-size: 22px;
+      display: none;
+    }
+
+    #thanks {
+      display: none;
+      margin-top: 40px;
+      font-size: 18px;
+      color: #0ff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎯 Final Mission: Clap With One Hand</h1>
+  <div id="task">Try clapping with one hand for 5 seconds. Then click below.</div>
+  <button onclick="revealRoast()">Done Clapping</button>
+
+  <div id="roast"></div>
+  <div id="thanks"></div>
+
+  <script>
+    const roast = document.getElementById("roast");
+    const thanks = document.getElementById("thanks");
+
+    const roastLines = [
+      "👏 Wow. You just gave yourself a standing ovation in disappointment.",
+      "🫵 That looked dumb. And you did it with confidence.",
+      "💀 One-handed clapping? You must be the national chairperson of time-wasters.",
+      "😂 We have forwarded your performance to NASA. They're still confused.",
+      "🥲 5 seconds of clapping, 0 seconds of dignity."
+    ];
+
+    function revealRoast() {
+      const randomRoast = roastLines[Math.floor(Math.random() * roastLines.length)];
+      roast.style.display = "block";
+      roast.innerHTML = `💀 ${randomRoast}`;
+
+      setTimeout(() => {
+        alert("Thank you for being part of this madness ❤️");
+        alert("This entire site was built for laughter — with your real friends, your true bonds.");
+        alert("If you laughed even once... that's all we ever wanted. 😊");
+        thanks.style.display = "block";
+        thanks.innerHTML = `
+          🧠 Humor heals. Chaos unites. Friends make it legendary.<br><br>
+          🎉 Share this site with your craziest friends.<br>
+          🙏 And thank you for using <b>TrollPortalOfLittleHell.com</b><br><br>
+          <i>- Made with ❤️ & sarcasm</i>
+        `;
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>

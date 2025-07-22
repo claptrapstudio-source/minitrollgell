@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🎨 TROLL LEVEL 44 — Draw Your Personality</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      color: white;
+      font-family: monospace;
+      text-align: center;
+    }
+
+    h1 {
+      color: cyan;
+      margin-top: 30px;
+    }
+
+    canvas {
+      border: 2px solid #555;
+      margin-top: 20px;
+      background: #000;
+      touch-action: none;
+    }
+
+    #instructions {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    #message {
+      margin-top: 30px;
+      font-size: 18px;
+      color: yellow;
+    }
+
+    #footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 Personality Drawing Test</h1>
+  <p id="instructions">Draw a smiley face. Let’s see what your brain looks like on canvas!</p>
+
+  <canvas id="drawCanvas" width="300" height="300"></canvas>
+
+  <div id="message"></div>
+  <div id="footer"></div>
+
+  <script>
+    const canvas = document.getElementById("drawCanvas");
+    const ctx = canvas.getContext("2d");
+    let drawing = false;
+
+    // Support both mouse and touch
+    canvas.addEventListener("mousedown", start);
+    canvas.addEventListener("touchstart", start);
+
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("touchmove", draw);
+
+    canvas.addEventListener("mouseup", end);
+    canvas.addEventListener("touchend", end);
+
+    function start(e) {
+      drawing = true;
+      ctx.beginPath();
+      moveToEvent(e);
+      e.preventDefault();
+    }
+
+    function draw(e) {
+      if (!drawing) return;
+      lineToEvent(e);
+      e.preventDefault();
+    }
+
+    function end(e) {
+      drawing = false;
+      e.preventDefault();
+    }
+
+    function moveToEvent(e) {
+      const pos = getPos(e);
+      ctx.moveTo(pos.x, pos.y);
+    }
+
+    function lineToEvent(e) {
+      const pos = getPos(e);
+      ctx.lineTo(pos.x, pos.y);
+      ctx.strokeStyle = "lime";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    function getPos(e) {
+      if (e.touches && e.touches.length > 0) {
+        const rect = canvas.getBoundingClientRect();
+        return {
+          x: e.touches[0].clientX - rect.left,
+          y: e.touches[0].clientY - rect.top
+        };
+      } else {
+        return {
+          x: e.offsetX,
+          y: e.offsetY
+        };
+      }
+    }
+
+    // Trigger roast after 10 sec
+    setTimeout(() => {
+      document.getElementById("instructions").innerText = "Analyzing your masterpiece...";
+    }, 10000);
+
+    setTimeout(() => {
+      document.getElementById("message").innerHTML = `
+        😐 Wow.<br>
+        🎉 Congratulations! You’ve just drawn your personality — <span style="color:red;">empty inside.</span>
+      `;
+      document.getElementById("footer").innerHTML = `
+        💀 Share this with your artsy friends.<br>
+        🎭 Then try the next troll level.<br><br>
+        😂 Thank me later.
+      `;
+    }, 14000);
+  </script>
+
+</body>
+</html>

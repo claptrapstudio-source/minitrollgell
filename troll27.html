@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>📡 Location Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background: black;
+      color: #0f0;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    #scan {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    .loading {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    #warning {
+      display: none;
+      color: red;
+      font-size: 24px;
+      font-weight: bold;
+      animation: flash 1s infinite;
+      margin-top: 40px;
+    }
+
+    @keyframes flash {
+      0% { opacity: 1; }
+      50% { opacity: 0.2; }
+      100% { opacity: 1; }
+    }
+
+    #finalMsg {
+      display: none;
+      color: yellow;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="scan">📡 Scanning Device Location...</h1>
+  <p class="loading" id="progress">0%</p>
+  <div id="warning">⚠️ LOCATION LOCKED</div>
+  <div id="finalMsg"></div>
+  <audio id="siren" src="https://www.soundjay.com/misc/sounds/bomb-siren-01.mp3" preload="auto"></audio>
+
+  <script>
+    const progress = document.getElementById("progress");
+    const warning = document.getElementById("warning");
+    const finalMsg = document.getElementById("finalMsg");
+    const siren = document.getElementById("siren");
+
+    let percent = 0;
+    let loading = setInterval(() => {
+      percent += Math.floor(Math.random() * 7) + 3;
+      if (percent >= 100) percent = 100;
+      progress.innerText = percent + "%";
+
+      if (percent === 100) {
+        clearInterval(loading);
+        warning.style.display = "block";
+        siren.play();
+
+        setTimeout(() => {
+          finalMsg.style.display = "block";
+          finalMsg.innerHTML = `
+            <p>📍 Location Acquired: <strong>23.1907° N, 87.2865° E</strong></p>
+            <p style="color:red;">You are being watched. 👁️</p>
+            <p style="color:lime;">😂 TROLL LEVEL 27 COMPLETE</p>
+          `;
+          alert("🔴 TRACKING ENABLED.");
+          alert("We’re closer than you think...");
+        }, 3000);
+      }
+    }, 500);
+  </script>
+
+</body>
+</html>

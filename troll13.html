@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>💻 HACK.EXE - Terminal</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: "Courier New", monospace;
+      padding: 20px;
+      overflow: hidden;
+    }
+    #terminal {
+      white-space: pre-wrap;
+      height: 90vh;
+      overflow-y: scroll;
+      border: 2px solid #0f0;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="terminal">Initializing Hack.EXE v3.6.9...\n</div>
+
+  <script>
+    const terminal = document.getElementById("terminal");
+    const fakeLogs = [
+      "Connecting to target device...",
+      "Bypassing firewall [■■■■■■■■■░░░] 89%",
+      "Access granted. Entering /C/system/core",
+      "Injecting payload.exe...",
+      "Retrieving saved WiFi passwords...",
+      "Found: Netflix123, ilovebiriyani@2021, adminadmin",
+      "Downloading embarrassing browser history...",
+      "Extracting folder: /Secrets/Cringe_Stuff/",
+      "Uploading to: TrollLeaks.net",
+      "Encrypting device for ransom...",
+      "Just kidding. 😂",
+      "You’ve been hacked... emotionally.",
+      "This is not a drill — it’s a TROLL 😈"
+    ];
+
+    let i = 0;
+
+    function typeLine() {
+      if (i < fakeLogs.length) {
+        terminal.innerText += fakeLogs[i] + "\n";
+        terminal.scrollTop = terminal.scrollHeight;
+        i++;
+        setTimeout(typeLine, 1000);
+      }
+    }
+
+    typeLine();
+  </script>
+
+</body>
+</html>

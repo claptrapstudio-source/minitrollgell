@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>📂 Accessing Browser History...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: black;
+      color: lime;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 60px;
+    }
+
+    #status {
+      font-size: 18px;
+      color: cyan;
+      margin-bottom: 30px;
+    }
+
+    #results {
+      display: none;
+      font-size: 20px;
+      color: red;
+      animation: glitch 1s infinite;
+    }
+
+    @keyframes glitch {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔍 Scanning Your Google Search History...</h1>
+  <p id="status">Please wait... Fetching humiliating results...</p>
+  <div id="results"></div>
+
+  <script>
+    const status = document.getElementById("status");
+    const results = document.getElementById("results");
+
+    const fakeSearches = [
+      "how to stop being awkward in mirror",
+      "can a brain be rebooted",
+      "i accidentally joined a pyramid scheme",
+      "how to be smart without doing anything",
+      "do fish have feelings",
+      "can I sue my toaster",
+      "how to impress people with low IQ",
+      "is laziness a disability",
+      "can I sell my soul for WiFi",
+      "how to delete embarrassing memories"
+    ];
+
+    // Randomly pick 5 different "searches"
+    const selected = [];
+    while (selected.length < 5) {
+      const rand = fakeSearches[Math.floor(Math.random() * fakeSearches.length)];
+      if (!selected.includes(rand)) selected.push(rand);
+    }
+
+    setTimeout(() => {
+      status.style.display = "none";
+      results.style.display = "block";
+
+      results.innerHTML = `
+        <p>📂 HISTORY LEAKED</p><br>
+        <p><strong>Top Searches:</strong></p>
+        <ul style="list-style: none; padding: 0;">
+          ${selected.map(item => `<li>🔎 ${item}</li>`).join('')}
+        </ul>
+        <br><p style="color: yellow;">😂 TROLL LEVEL 37 COMPLETE</p>
+        <p style="color: white;">Your dignity has been backed up to the cloud. 🔥</p>
+      `;
+
+      setTimeout(() => {
+        alert("😱 Hwaaaaa! You’ve searched these!?");
+      }, 1000);
+    }, 4000);
+  </script>
+
+</body>
+</html>

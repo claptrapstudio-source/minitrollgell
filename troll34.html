@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🛡️ Scanning for Viruses...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: black;
+      color: lime;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 60px;
+    }
+
+    #progressBox {
+      width: 80%;
+      height: 20px;
+      background: #111;
+      border: 2px solid red;
+      margin: 30px auto;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    #bar {
+      height: 100%;
+      width: 0%;
+      background: red;
+      transition: width 0.4s;
+    }
+
+    #status {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    #result {
+      display: none;
+      font-size: 22px;
+      color: red;
+      margin-top: 40px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🛡️ Virus Scan In Progress...</h1>
+  <div id="progressBox">
+    <div id="bar"></div>
+  </div>
+  <p id="status">Scanning system files...</p>
+  <div id="result"></div>
+
+  <script>
+    const bar = document.getElementById("bar");
+    const status = document.getElementById("status");
+    const result = document.getElementById("result");
+
+    let progress = 0;
+    const scan = setInterval(() => {
+      progress += Math.floor(Math.random() * 7) + 3;
+      if (progress >= 100) progress = 100;
+
+      bar.style.width = progress + "%";
+      status.innerText = `Scanning system... ${progress}%`;
+
+      if (progress === 69) {
+        status.innerText = "Warning: Malware Signature Detected 🧠💩";
+      }
+
+      if (progress >= 100) {
+        clearInterval(scan);
+        status.style.display = "none";
+        result.style.display = "block";
+        result.innerHTML = `
+          <p>⚠️ 69 DEADLY VIRUSES FOUND ON YOUR SOUL</p>
+          <p>🧬 Threat Type: Dumbware + Clownware + Overconfidence Trojan</p>
+          <p>Recommended Action: <span style="color:yellow;">🔥 Burn your phone immediately.</span></p>
+          <p style="color:lime;">😂 TROLL LEVEL 34 COMPLETE</p>
+        `;
+        alert("💀 Your brain.exe is infected.");
+        alert("🔥 Restart life in safe mode.");
+      }
+    }, 500);
+  </script>
+
+</body>
+</html>

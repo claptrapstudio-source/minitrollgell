@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>📸 AI Age Detection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background-color: #000;
+      color: #0ff;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 100px;
+    }
+    .scanner {
+      font-size: 20px;
+      margin: 20px auto;
+      width: 90%;
+    }
+    #result {
+      display: none;
+      font-size: 24px;
+      color: #f54291;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔍 Scanning Facial Structure...</h1>
+  <div class="scanner">Analyzing bone density, skin elasticity, and memory strength...</div>
+
+  <div id="result"></div>
+
+  <script>
+    const result = document.getElementById("result");
+    const ages = [
+      "72 years old 👴",
+      "88 years old 💀",
+      "60 years old & retired 😌",
+      "You are a fossil now. 🦴",
+      "105 years young... in spirit. 🧓",
+      "199 years old... undead? 🧛‍♂️"
+    ];
+
+    setTimeout(() => {
+      const finalAge = ages[Math.floor(Math.random() * ages.length)];
+      result.innerHTML = `<strong>📅 AGE DETECTED:</strong><br>${finalAge}<br><br><em>Please proceed to nap immediately. 🛏️</em>`;
+      result.style.display = "block";
+      alert("Face scan complete. Grandpa mode activated. 👴");
+      alert("You’ve been trolled. Share before your memory expires 😈");
+    }, 6000);
+  </script>
+
+</body>
+</html>

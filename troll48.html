@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🎁 Reward Confirmation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: #111;
+      color: #0f0;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 100px;
+      transition: background-color 1s ease;
+    }
+
+    h1 {
+      color: gold;
+      font-size: 28px;
+    }
+
+    #message {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+
+    #money {
+      font-size: 36px;
+      color: lime;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎉 Congratulations!</h1>
+  <div id="message">You have just won:</div>
+  <div id="money">₹1000</div>
+
+  <script>
+    setTimeout(() => {
+      alert("🤔 Wait... is it really YOU?");
+    }, 3000);
+
+    setTimeout(() => {
+      alert("🚫 You're unworthy to hold that much money.");
+    }, 5000);
+
+    setTimeout(() => {
+      alert("👋 Bye.");
+      document.body.innerHTML = ""; // blank screen
+      document.body.style.backgroundColor = "#000";
+    }, 7000);
+  </script>
+
+</body>
+</html>

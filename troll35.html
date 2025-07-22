@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>👻 Connecting to Spirit World...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    #status {
+      font-size: 20px;
+      color: cyan;
+      margin-bottom: 30px;
+    }
+
+    #insult {
+      display: none;
+      font-size: 24px;
+      color: red;
+      animation: shake 0.8s infinite;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔮 Summoning Entity...</h1>
+  <p id="status">Opening spirit channel...</p>
+  <div id="insult"></div>
+
+  <script>
+    const status = document.getElementById("status");
+    const insult = document.getElementById("insult");
+
+    const stages = [
+      "Calibrating energy fields...",
+      "Aligning with ghost frequency...",
+      "Scanning aura…",
+      "Contacting spirit behind you...",
+      "Receiving message..."
+    ];
+
+    let i = 0;
+
+    function nextStage() {
+      if (i < stages.length) {
+        status.innerText = stages[i];
+        i++;
+        setTimeout(nextStage, 2000);
+      } else {
+        status.style.display = "none";
+        insult.style.display = "block";
+        insult.innerHTML = `
+          👻 The ghost behind you says:<br><br>
+          <strong>"You suck at games, at life, and at existing."</strong><br><br>
+          😂 TROLL LEVEL 35 COMPLETE
+        `;
+        alert("👻 Final message: Get better... or get haunted.");
+      }
+    }
+
+    nextStage();
+  </script>
+
+</body>
+</html>

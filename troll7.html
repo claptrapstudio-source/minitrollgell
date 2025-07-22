@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🧠 Memory Booster Test</title>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+      overflow: hidden;
+    }
+    button {
+      padding: 12px 20px;
+      background: crimson;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .btn-clone {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 Memory Booster Test</h1>
+  <p>Click "Start Test" to begin...</p>
+
+  <button onclick="startChaos()">Start Test</button>
+
+  <script>
+    function startChaos() {
+      alert("Starting brain power calibration...");
+      let count = 0;
+
+      const interval = setInterval(() => {
+        const btn = document.createElement("button");
+        btn.textContent = "Click me";
+        btn.className = "btn-clone";
+        btn.style.left = Math.random() * window.innerWidth + "px";
+        btn.style.top = Math.random() * window.innerHeight + "px";
+        btn.onclick = () => alert("Still clicking? You're in a trap 😈");
+        document.body.appendChild(btn);
+        count++;
+
+        if (count >= 100) {
+          clearInterval(interval);
+          alert("You’ve been trapped in a never-ending loop. 😂");
+        }
+      }, 100);
+    }
+  </script>
+
+</body>
+</html>

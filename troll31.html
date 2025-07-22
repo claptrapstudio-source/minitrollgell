@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🎮 Launching Game...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: black;
+      color: cyan;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    .loader {
+      border: 12px solid #222;
+      border-top: 12px solid cyan;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      animation: spin 1.5s linear infinite;
+      margin: 30px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #status {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    #trollMsg {
+      display: none;
+      font-size: 22px;
+      color: red;
+      margin-top: 40px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎮 Loading: Please Wait...</h1>
+  <div class="loader"></div>
+  <p id="status">Optimizing pixels... 0%</p>
+  <div id="trollMsg"></div>
+
+  <script>
+    const status = document.getElementById("status");
+    const trollMsg = document.getElementById("trollMsg");
+
+    let percent = 0;
+    const loading = setInterval(() => {
+      percent += Math.floor(Math.random() * 5) + 1;
+      if (percent > 99) percent = 99;
+      status.innerText = `Optimizing pixels... ${percent}%`;
+    }, 500);
+
+    setTimeout(() => {
+      clearInterval(loading);
+      status.style.display = "none";
+      trollMsg.style.display = "block";
+      trollMsg.innerHTML = `
+        <p>😑 YOU IDIOT.</p>
+        <p>There’s no game here.</p>
+        <p>Can’t you guess with this boring screen?</p>
+        <p style="color:lime;">😂 TROLL LEVEL 31 COMPLETE</p>
+      `;
+      alert("💀 You just waited 30 seconds for absolutely nothing.");
+    }, 30000);
+  </script>
+
+</body>
+</html>

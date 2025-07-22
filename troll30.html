@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>⚙️ Device Formatting...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background: black;
+      color: lime;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    h1 {
+      font-size: 22px;
+      color: red;
+      animation: glitch 0.4s infinite;
+    }
+
+    #progressBox {
+      width: 80%;
+      height: 25px;
+      background: #222;
+      margin: 40px auto;
+      border: 2px solid red;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    #fill {
+      height: 100%;
+      width: 0%;
+      background: red;
+      transition: width 0.4s;
+    }
+
+    #percent {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    #final {
+      display: none;
+      margin-top: 40px;
+      font-size: 20px;
+      color: yellow;
+    }
+
+    @keyframes glitch {
+      0% { transform: skew(0deg); }
+      50% { transform: skew(1deg, -1deg); }
+      100% { transform: skew(0deg); }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>⚠️ Formatting Internal Storage...</h1>
+  <div id="progressBox">
+    <div id="fill"></div>
+  </div>
+  <p id="percent">0%</p>
+  <div id="final"></div>
+  <audio id="glitchSound" src="https://www.soundjay.com/button/beep-10.mp3" preload="auto"></audio>
+
+  <script>
+    const fill = document.getElementById("fill");
+    const percent = document.getElementById("percent");
+    const final = document.getElementById("final");
+    const sound = document.getElementById("glitchSound");
+
+    let progress = 0;
+
+    let fakeFormat = setInterval(() => {
+      let increase = Math.floor(Math.random() * 8) + 3;
+      progress += increase;
+      if (progress >= 100) progress = 100;
+
+      fill.style.width = progress + "%";
+      percent.innerText = progress + "%";
+
+      if (progress === 69) {
+        sound.play();
+        document.body.style.backgroundColor = "#330000";
+        percent.innerText = "System Freeze Detected...";
+      }
+
+      if (progress >= 100) {
+        clearInterval(fakeFormat);
+        document.body.style.background = "#000";
+        fill.style.background = "gray";
+        percent.innerText = "All files permanently deleted.";
+        setTimeout(() => {
+          final.style.display = "block";
+          final.innerHTML = `
+            <p>💀 Just kidding.</p>
+            <p>Your files are safe. But your soul isn’t coming back.</p>
+            <p style="color:lime;">😂 TROLL LEVEL 30 — MASTERPIECE COMPLETE</p>
+          `;
+          alert("⚙️ Format complete: Mental data erased.");
+        }, 3000);
+      }
+    }, 500);
+  </script>
+
+</body>
+</html>

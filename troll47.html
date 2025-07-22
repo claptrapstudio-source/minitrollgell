@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🧠 TROLL LEVEL 47 — Human Verification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: monospace;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: cyan;
+    }
+
+    #boxArea {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      gap: 10px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .captchaBox {
+      width: 100px;
+      height: 100px;
+      background: #111;
+      border: 2px solid #0f0;
+      cursor: pointer;
+    }
+
+    #taskText {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    #result {
+      margin-top: 40px;
+      font-size: 20px;
+      color: red;
+      display: none;
+    }
+
+    #footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🤖 HUMAN VERIFICATION REQUIRED</h1>
+  <p id="taskText">Click all squares with **anxiety**.</p>
+
+  <div id="boxArea">
+    <div class="captchaBox"></div>
+    <div class="captchaBox"></div>
+    <div class="captchaBox"></div>
+    <div class="captchaBox"></div>
+    <div class="captchaBox"></div>
+    <div class="captchaBox"></div>
+    <div class="captchaBox"></div>
+    <div class="captchaBox"></div>
+    <div class="captchaBox"></div>
+  </div>
+
+  <div id="result"></div>
+  <div id="footer"></div>
+
+  <script>
+    const taskText = document.getElementById("taskText");
+    const boxes = document.querySelectorAll(".captchaBox");
+    const result = document.getElementById("result");
+    const footer = document.getElementById("footer");
+
+    let step = 0;
+
+    boxes.forEach(box => {
+      box.addEventListener("click", () => {
+        step++;
+        if (step === 3) {
+          taskText.innerText = "Now… Explain the meaning of life in one word.";
+        }
+        if (step === 6) {
+          taskText.innerText = "Final step: Hold your breath for 30 seconds.";
+        }
+        if (step >= 9) {
+          document.getElementById("boxArea").style.display = "none";
+          taskText.style.display = "none";
+          setTimeout(() => {
+            result.style.display = "block";
+            result.innerHTML = `
+              💀 Verification Failed<br>
+              🧠 Your humanity could not be verified.<br>
+              🤖 Even AI rejected your application.
+            `;
+            footer.innerHTML = `
+              Share this failure with someone equally human.<br>
+              Then try another troll task. If your ego allows it.<br><br>
+              😂 Thank me later.
+            `;
+          }, 2000);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

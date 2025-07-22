@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🔄 Loading Secret Content...</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    .spinner {
+      border: 10px solid #333;
+      border-top: 10px solid crimson;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      animation: spin 1s linear infinite;
+      margin: 40px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔄 Loading Super Secret Feature...</h1>
+  <div class="spinner"></div>
+  <p>Please wait... this may take a few seconds... or forever 🤔</p>
+
+  <script>
+    setTimeout(() => {
+      alert("Still loading? You really thought this was real? 😂");
+      alert("You’ve been trolled successfully. Now go trap someone else 😈");
+    }, 7000); // waits 7 seconds before trolling
+  </script>
+
+</body>
+</html>

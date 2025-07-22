@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🐍 Snake Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background: black;
+      color: lime;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    #gameCanvas {
+      background-color: #111;
+      border: 3px solid lime;
+    }
+
+    #message {
+      display: none;
+      font-size: 20px;
+      color: red;
+      margin-top: 20px;
+      animation: flicker 1s infinite;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🐍 Snake Game: Get Ready!</h1>
+  <canvas id="gameCanvas" width="300" height="300"></canvas>
+  <p id="message">You’re tooooo dumb to complete this game, thank you.<br>Snake has left the chat 🐍✌️</p>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // Simple fake snake frame
+    function drawSnake() {
+      ctx.fillStyle = "lime";
+      ctx.fillRect(60, 60, 20, 20);
+      ctx.fillRect(80, 60, 20, 20);
+      ctx.fillRect(100, 60, 20, 20);
+    }
+
+    drawSnake();
+
+    // After 2 seconds, hide canvas and show troll message
+    setTimeout(() => {
+      canvas.style.display = "none";
+      document.getElementById("message").style.display = "block";
+      alert("💀 You thought you'd get to play?");
+    }, 2000);
+  </script>
+
+</body>
+</html>

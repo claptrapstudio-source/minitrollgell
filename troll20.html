@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🎙️ NovaAI - Voice Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: #111;
+      color: #0ff;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 100px;
+    }
+    #mic {
+      font-size: 80px;
+      color: red;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); color: red; }
+      50% { transform: scale(1.1); color: #f00; }
+      100% { transform: scale(1); color: red; }
+    }
+    #status {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="mic">🎤</div>
+  <h1>NovaAI Voice Assistant</h1>
+  <p id="status">Listening...</p>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("status").textContent = "Analyzing voice pattern...";
+    }, 2000);
+
+    setTimeout(() => {
+      alert("🧠 Error: Vocal input is too basic.");
+    }, 4000);
+
+    setTimeout(() => {
+      alert("🤖 I’m sorry… I only understand intelligent life forms.");
+    }, 6000);
+
+    setTimeout(() => {
+      document.body.innerHTML = `
+        <h1 style="color:red;">🤖 REJECTED</h1>
+        <p style="color:white; font-size:18px;">Voice pattern lacks signs of intelligence.</p>
+        <p style="color:yellow;">Try evolving and come back later.</p>
+        <p style="color:lime;">😂 Troll Level 20 Completed</p>
+      `;
+      const audio = new Audio("https://www.soundjay.com/human/fart-04.mp3");
+      audio.play();
+    }, 8000);
+  </script>
+
+</body>
+</html>

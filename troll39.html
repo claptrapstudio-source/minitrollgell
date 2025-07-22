@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🎁 YOU’VE WON A GRAND PRIZE!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #111, #222);
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: gold;
+      font-size: 32px;
+      animation: pop 0.7s ease-in-out infinite alternate;
+    }
+
+    @keyframes pop {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+
+    .box {
+      background: #000;
+      border: 2px dashed lime;
+      padding: 30px;
+      margin-top: 30px;
+      border-radius: 15px;
+    }
+
+    #truth {
+      display: none;
+      font-size: 20px;
+      color: red;
+      animation: insult 0.8s infinite;
+    }
+
+    @keyframes insult {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.05); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    button {
+      padding: 12px 24px;
+      margin-top: 20px;
+      background-color: crimson;
+      color: white;
+      border: none;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎉 CONGRATULATIONS!</h1>
+  <div class="box">
+    <p>You are our 1,000,000th visitor!</p>
+    <p>Click below to claim your reward 💰</p>
+    <button onclick="destroyHope()">CLAIM PRIZE</button>
+  </div>
+
+  <div id="truth"></div>
+
+  <script>
+    function destroyHope() {
+      document.querySelector(".box").style.display = "none";
+      const truth = document.getElementById("truth");
+      truth.style.display = "block";
+      truth.innerHTML = `
+        <p>🎁 You’ve won absolutely nothing.</p>
+        <p>💀 Because you ARE nothing.</p>
+        <p>😵 As a human, you’ve failed the species.</p>
+        <p>🌱 Try being a houseplant next time. They do more.</p>
+        <p style="color:lime;">😂 TROLL LEVEL 39 COMPLETE</p>
+      `;
+      setTimeout(() => {
+        alert("🔥 You just got disrespected by HTML.");
+      }, 800);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🔐 Downloading: unlockTool.exe</title>
+  <style>
+    body {
+      background-color: #000;
+      color: lime;
+      font-family: "Courier New", monospace;
+      text-align: center;
+      padding-top: 100px;
+    }
+    .progress {
+      width: 80%;
+      background-color: #222;
+      margin: 30px auto;
+      border: 2px solid lime;
+      height: 30px;
+      position: relative;
+    }
+    .bar {
+      height: 100%;
+      width: 0%;
+      background-color: lime;
+      animation: load 10s linear forwards;
+    }
+    @keyframes load {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💾 Downloading: unlockTool.exe</h1>
+  <p>Installing system enhancement tools...</p>
+
+  <div class="progress">
+    <div class="bar" id="bar"></div>
+  </div>
+
+  <p id="status">Status: Connecting to remote server...</p>
+
+  <script>
+    const status = document.getElementById("status");
+
+    setTimeout(() => status.textContent = "Status: Injecting Keylogger...", 2000);
+    setTimeout(() => status.textContent = "Status: Disabling Firewall...", 4000);
+    setTimeout(() => status.textContent = "Status: Encrypting files...", 6000);
+    setTimeout(() => status.textContent = "Status: Uploading data to Dark Web...", 8000);
+    
+    setTimeout(() => {
+      alert("💣 SYSTEM BREACH DETECTED!");
+      alert("Just kidding 😂 You've been trolled by Regret.exe!");
+      alert("Send this to your friend before you feel the real pain 😈");
+      document.body.style.backgroundColor = "crimson";
+      document.body.innerHTML = "<h1 style='color:white; font-size:40px;'>😂 TROLLED. HARD. 😂</h1><p style='font-size:20px;'>Hope you backed up your feelings.</p>";
+    }, 10500);
+  </script>
+
+</body>
+</html>

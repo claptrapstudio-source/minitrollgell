@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🧠 AI Age & Brain Analyzer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: black;
+      color: #0ff;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 60px;
+    }
+
+    #status {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+
+    #finalResult {
+      display: none;
+      margin-top: 40px;
+      color: yellow;
+      font-size: 18px;
+    }
+
+    .glow {
+      animation: glow 1s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #0ff; }
+      to { text-shadow: 0 0 20px #0ff, 0 0 30px #0ff; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="glow">🧠 AI Cognitive Scan In Progress...</h1>
+  <p id="status">Calibrating Neural Frequencies...</p>
+  <div id="finalResult"></div>
+
+  <script>
+    const status = document.getElementById("status");
+    const result = document.getElementById("finalResult");
+
+    const stages = [
+      "Analyzing facial wrinkles...",
+      "Measuring dopamine levels...",
+      "Scanning attention span (found none)...",
+      "Detecting common sense (still looking)...",
+      "Locating brain (standby)...",
+      "Estimating mental age...",
+      "Calculating IQ score...",
+      "Comparing with rocks...",
+    ];
+
+    let step = 0;
+
+    const updateStage = () => {
+      if (step < stages.length) {
+        status.innerText = stages[step];
+        step++;
+        setTimeout(updateStage, 1500);
+      } else {
+        status.style.display = "none";
+        result.style.display = "block";
+        result.innerHTML = `
+          <p>🧓 Estimated Age: <strong>73</strong></p>
+          <p>🧠 Brain Status: <strong>Currently buffering…</strong></p>
+          <p>💡 IQ Score: <strong>-404 Not Found</strong></p>
+          <p>📉 Mental Condition: <em>Terminal Stupidity</em></p>
+          <p style="color:lime;">😂 TROLL LEVEL 28 COMPLETE</p>
+        `;
+        alert("Cognitive Scan Failed.");
+        alert("Diagnosis: Your brain left the chat.");
+      }
+    };
+
+    updateStage();
+  </script>
+
+</body>
+</html>

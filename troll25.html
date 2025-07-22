@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>📡 Radiation Detector</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background: black;
+      color: #0f0;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 60px;
+    }
+
+    .scanner {
+      font-size: 28px;
+      margin: 20px 0;
+    }
+
+    #bar {
+      width: 80%;
+      height: 25px;
+      background: #222;
+      margin: 20px auto;
+      border: 2px solid #0f0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    #fill {
+      height: 100%;
+      width: 0%;
+      background: red;
+      transition: width 0.3s;
+    }
+
+    #warning {
+      color: red;
+      font-size: 20px;
+      margin-top: 30px;
+      display: none;
+    }
+
+    #boom {
+      display: none;
+      color: yellow;
+      font-size: 22px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📱 Mobile Radiation Scan in Progress...</h1>
+  <p class="scanner">Analyzing screen exposure...</p>
+  <div id="bar"><div id="fill"></div></div>
+  <p id="percent">Radiation Level: 0%</p>
+  <p id="warning">⚠️ Warning: Levels Rising Rapidly!</p>
+  <div id="boom"></div>
+
+  <script>
+    const fill = document.getElementById("fill");
+    const percentText = document.getElementById("percent");
+    const warning = document.getElementById("warning");
+    const boom = document.getElementById("boom");
+
+    let level = 0;
+    let scan = setInterval(() => {
+      level += Math.floor(Math.random() * 10) + 5;
+      if (level > 100) level = 100;
+      fill.style.width = level + "%";
+      percentText.innerText = "Radiation Level: " + level + "%";
+
+      if (level >= 70) {
+        warning.style.display = "block";
+      }
+
+      if (level >= 100) {
+        clearInterval(scan);
+        warning.style.display = "none";
+        document.body.style.background = "#a00";
+        boom.style.display = "block";
+        boom.innerHTML = `
+          <h2>💥 BOOM!</h2>
+          <p>📵 Your IQ just exploded.</p>
+          <p>Too much screen. Too little brain.</p>
+          <p style="color:lime;">😂 TROLL LEVEL 25 COMPLETE</p>
+        `;
+        alert("☢️ Radiation overload detected!");
+        alert("💥 Brain system failure.");
+      }
+    }, 500);
+  </script>
+
+</body>
+</html>

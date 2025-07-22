@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🧠 Free IQ Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 30px;
+    }
+
+    h1 {
+      color: lime;
+    }
+
+    .survey, .loading, .result {
+      display: none;
+    }
+
+    .loading p {
+      color: cyan;
+      font-size: 18px;
+      margin-top: 40px;
+    }
+
+    .loader {
+      margin: 20px auto;
+      border: 8px solid #222;
+      border-top: 8px solid red;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    button {
+      background-color: crimson;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: darkred;
+    }
+
+    .insult {
+      font-size: 20px;
+      color: red;
+      animation: glitch 1s infinite;
+    }
+
+    @keyframes glitch {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 Free IQ Test</h1>
+
+  <div class="survey" id="survey">
+    <p>Q1. What is 2 + 2?</p>
+    <p>Q2. What color is the sky?</p>
+    <p>Q3. Do you breathe manually when you think about it?</p>
+    <button onclick="startProcessing()">Submit Answers</button>
+  </div>
+
+  <div class="loading" id="loading">
+    <div class="loader"></div>
+    <p>Analyzing your deep intellect...</p>
+  </div>
+
+  <div class="result" id="result">
+    <p class="insult" id="insultText"></p>
+    <button onclick="retry()">Retry Test</button>
+  </div>
+
+  <script>
+    const insults = [
+      "Your IQ is 2%. Same as your phone battery.",
+      "You're mentally running in Safe Mode.",
+      "You're the final boss of wrong answers.",
+      "Your brain pinged Google and still got it wrong.",
+      "You're not dumb. You're aggressively unintelligent.",
+      "You failed the test before it even began.",
+      "IQ Results: Banana has higher processing speed.",
+      "Neurons? You have expired trial version.",
+      "Your thoughts are buffering... forever.",
+      "You reached the bottom of the brain leaderboard."
+    ];
+
+    let insultIndex = -1;
+
+    document.getElementById("survey").style.display = "block";
+
+    function startProcessing() {
+      document.getElementById("survey").style.display = "none";
+      document.getElementById("loading").style.display = "block";
+
+      setTimeout(() => {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("result").style.display = "block";
+        insultIndex = Math.floor(Math.random() * insults.length);
+        document.getElementById("insultText").innerText = insults[insultIndex];
+        alert("😱 Hwaaaaa! You’ve searched these!? Oh wait... wrong roast. Still, you're dumb.");
+      }, 15000);
+    }
+
+    function retry() {
+      alert("😐 You are still the same.");
+      document.getElementById("insultText").innerText = insults[insultIndex] + "\n(And you tried again. Bold.)";
+    }
+  </script>
+
+</body>
+</html>

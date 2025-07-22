@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🖱️ Click to Win ₹10,000!</title>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+    h1 {
+      margin-top: 80px;
+      color: gold;
+    }
+    #btn {
+      position: absolute;
+      padding: 15px 25px;
+      background: crimson;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🤑 Click the Button to Claim ₹10,000</h1>
+  <button id="btn">CLICK ME</button>
+
+  <script>
+    const btn = document.getElementById('btn');
+
+    btn.style.top = "200px";
+    btn.style.left = "150px";
+
+    btn.addEventListener('mouseover', () => {
+      const x = Math.floor(Math.random() * (window.innerWidth - 100));
+      const y = Math.floor(Math.random() * (window.innerHeight - 50));
+      btn.style.left = x + 'px';
+      btn.style.top = y + 'px';
+    });
+
+    btn.addEventListener('click', () => {
+      alert("You actually caught it?! Nah. Just kidding 😈");
+      alert("You’ve been rage-trolled. Now go ruin your friend’s day 😂");
+    });
+  </script>
+
+</body>
+</html>

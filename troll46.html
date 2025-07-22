@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🧠 TROLL LEVEL 46 — IQ Analysis Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: monospace;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: cyan;
+    }
+
+    .question {
+      margin-top: 30px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #222;
+      color: lime;
+      border: 1px solid lime;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 40px;
+      font-size: 20px;
+      color: red;
+      display: none;
+    }
+
+    #footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 IQ LEVEL ANALYSIS</h1>
+  <p>Please answer the following 3 questions honestly...</p>
+
+  <div class="question" id="q1">
+    <p>1. If you had 4 pencils and I took away 2, how many do you have?</p>
+    <button onclick="nextQuestion()">2</button>
+    <button onclick="nextQuestion()">I punch you</button>
+  </div>
+
+  <div class="question" id="q2" style="display:none;">
+    <p>2. Which number comes after 3?</p>
+    <button onclick="nextQuestion()">7</button>
+    <button onclick="nextQuestion()">Potato</button>
+  </div>
+
+  <div class="question" id="q3" style="display:none;">
+    <p>3. Select the odd one out:</p>
+    <button onclick="finishTest()">Banana</button>
+    <button onclick="finishTest()">Banana</button>
+  </div>
+
+  <div id="result"></div>
+  <div id="footer"></div>
+
+  <script>
+    let step = 1;
+    const q1 = document.getElementById("q1");
+    const q2 = document.getElementById("q2");
+    const q3 = document.getElementById("q3");
+    const result = document.getElementById("result");
+    const footer = document.getElementById("footer");
+
+    const insults = [
+      "Your IQ is: Undefined. Brain module not detected.",
+      "You scored lower than the test's battery level.",
+      "Processing speed: slower than a snail in traffic.",
+      "Cognitive status: Please insert coin to restart brain.",
+      "Result: You qualify for... absolutely nothing.",
+      "Test complete. Recommendation: Never think again.",
+      "AI tried to read your mind. It found static.",
+      "Congratulations! You’ve disappointed science.",
+      "Your brainwaves resemble a flatline. Well done.",
+      "Success! You've officially wasted 3 questions of life."
+    ];
+
+    function nextQuestion() {
+      if (step === 1) {
+        q1.style.display = "none";
+        q2.style.display = "block";
+        step++;
+      } else if (step === 2) {
+        q2.style.display = "none";
+        q3.style.display = "block";
+        step++;
+      }
+    }
+
+    function finishTest() {
+      q3.style.display = "none";
+      const insult = insults[Math.floor(Math.random() * insults.length)];
+      result.innerHTML = `💀 ${insult}`;
+      result.style.display = "block";
+      footer.innerHTML = `
+        😂 Share your “genius” result with your equally smart friends.<br>
+        🧠 Then try another troll test. Maybe that’ll help.<br><br>
+        Thank me later.
+      `;
+    }
+  </script>
+
+</body>
+</html>

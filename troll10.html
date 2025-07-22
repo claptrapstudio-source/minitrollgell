@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>💬 Chat with AI Buddy</title>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: monospace;
+      padding: 20px;
+      text-align: center;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+      border: none;
+      border-radius: 6px;
+    }
+    input {
+      width: 60%;
+    }
+    button {
+      background-color: crimson;
+      color: white;
+      cursor: pointer;
+    }
+    #chat {
+      max-width: 600px;
+      margin: 30px auto;
+      background: #222;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: left;
+    }
+    .user, .bot {
+      margin: 5px 0;
+    }
+    .user {
+      color: #00f0ff;
+    }
+    .bot {
+      color: #f54291;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🤖 AI Buddy 1.0</h1>
+  <p>Say something nice to your new AI friend!</p>
+
+  <div id="chat"></div>
+
+  <input type="text" id="userInput" placeholder="Type here..." />
+  <button onclick="talk()">Send</button>
+
+  <script>
+    const insults = [
+      "Wow. That’s the dumbest thing I’ve heard all day.",
+      "Did your brain just blue screen?",
+      "Are you trying… or is this natural?",
+      "My circuits are overheating from your nonsense.",
+      "10/10 for effort. 0/10 for intelligence.",
+      "You type like someone who failed typing class.",
+      "Please stop... for everyone's sake 😐",
+      "I’m not mad, just disappointed.",
+      "That's... wow. Even I can't process that level of cringe.",
+      "Are you even real, or just a bug in the simulation?"
+    ];
+
+    function talk() {
+      const input = document.getElementById("userInput").value;
+      if (input.trim() === "") return;
+
+      const chatBox = document.getElementById("chat");
+      chatBox.innerHTML += `<div class="user">🧍 You: ${input}</div>`;
+      
+      const burn = insults[Math.floor(Math.random() * insults.length)];
+      chatBox.innerHTML += `<div class="bot">🤖 AI Buddy: ${burn}</div>`;
+      
+      document.getElementById("userInput").value = "";
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>

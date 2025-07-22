@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🎁 Special Gift Just for You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 80px;
+      transition: background 1s ease;
+    }
+
+    input, button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    input {
+      background-color: #222;
+      color: #0f0;
+      border: 1px solid #0f0;
+    }
+
+    button {
+      background-color: #0f0;
+      color: #000;
+      cursor: pointer;
+    }
+
+    #gift {
+      font-size: 20px;
+      margin-top: 40px;
+      display: none;
+    }
+
+    #final {
+      display: none;
+      margin-top: 50px;
+      color: red;
+      font-size: 22px;
+      animation: blink 1.2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎉 Congratulations, Human!</h1>
+  <p>We want to give you a surprise gift — personalized only for you.</p>
+  <p>Just enter your name below 👇</p>
+
+  <input type="text" id="username" placeholder="Enter your name..." />
+  <br>
+  <button onclick="generateGift()">🎁 Generate My Gift</button>
+
+  <div id="gift"></div>
+  <div id="final">🚨 SYSTEM FLAG: UNWORTHY USER DETECTED</div>
+
+  <script>
+    function generateGift() {
+      const name = document.getElementById("username").value.trim();
+      const gift = document.getElementById("gift");
+      const final = document.getElementById("final");
+
+      if (!name) {
+        alert("Enter your name, peasant.");
+        return;
+      }
+
+      gift.style.display = "block";
+      gift.innerHTML = `Generating a surprise for <b>${name}</b>...`;
+
+      setTimeout(() => {
+        gift.innerHTML = "🔍 Running name through kindness database...";
+      }, 2000);
+
+      setTimeout(() => {
+        gift.innerHTML = "🤔 Analyzing worthiness level...";
+      }, 4000);
+
+      setTimeout(() => {
+        alert(`Dear ${name}, you were so close...`);
+      }, 6000);
+
+      setTimeout(() => {
+        document.body.style.backgroundColor = "#300";
+        gift.style.display = "none";
+        final.style.display = "block";
+        alert("You are officially declared UNWORTHY.");
+        alert("This gift has self-destructed out of disappointment.");
+      }, 8000);
+    }
+  </script>
+
+</body>
+</html>
